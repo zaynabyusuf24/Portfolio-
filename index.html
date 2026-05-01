@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zaynab Yusuf — Sales & Client Engagement</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f2440;
+    --blue: #1a4a8a;
+    --gold: #c9a84c;
+    --cream: #faf8f3;
+    --warm: #f2ece0;
+    --text: #1c1c1c;
+    --muted: #6b6b6b;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 10%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(26,74,138,0.4) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-name span { color: var(--gold); }
+
+  .hero-tagline {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .contact-item .dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .stat-card:hover {
+    background: rgba(201,168,76,0.08);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.4;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 100px 0; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 48px;
+  }
+
+  /* ABOUT */
+  .about { background: var(--warm); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: #3a3a3a;
+    margin-bottom: 20px;
+  }
+
+  .about-highlight {
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+    margin: 32px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  .skills-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .skills-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text);
+    padding: 12px 16px;
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .skills-list li::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* EXPERIENCE */
+  .experience { background: var(--cream); }
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 52px;
+    padding-left: 28px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -38px; top: 6px;
+    width: 14px; height: 14px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+
+  .timeline-date {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .timeline-org {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timeline-bullets li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #3a3a3a;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .timeline-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* CERTS */
+  .certifications { background: var(--navy); }
+
+  .certifications .section-title { color: var(--white); }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .cert-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: all 0.3s ease;
+  }
+
+  .cert-card:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .cert-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+
+  .cert-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .cert-issuer {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--warm);
+    text-align: center;
+    padding: 100px 40px;
+  }
+
+  .cta-section .section-title { margin-bottom: 16px; }
+
+  .cta-sub {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 40px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15,36,64,0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border: 2px solid var(--navy);
+  }
+
+  .btn-outline:hover {
+    background: var(--navy);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 28px 32px; }
+    .hero-right { padding: 0 28px 60px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .container { padding: 0 24px; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="eyebrow">Portfolio · Abuja, Nigeria</p>
+    <h1 class="hero-name">Zaynab<br/><span>Yusuf</span></h1>
+    <p class="hero-tagline">Client engagement specialist with a gift for turning conversations into confident decisions. Passionate about people, process, and purposeful communication.</p>
+    <div class="hero-contact">
+      <div class="contact-item"><span class="dot"></span> yusufzaynab92@gmail.com</div>
+      <div class="contact-item"><span class="dot"></span> +234 08037455568</div>
+      <div class="contact-item"><span class="dot"></span> Abuja, FCT — Open to Opportunities</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Years of client-facing experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Patients & community members engaged</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Professional certifications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">BSc</div>
+        <div class="stat-label">Public Health Science, KWASU</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">Helping People Make<br/>Confident Decisions</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I am a Public Health graduate with a strong foundation in client engagement, needs assessment, and relationship management. Throughout my career — from clinical settings in Abuja to community outreach across Nigeria — I have been the person people turn to when they need clarity, guidance, and reassurance.</p>
+        <div class="about-highlight">"Every conversation is an opportunity to understand someone's problem and offer them a real solution."</div>
+        <p>I am certified in Content Marketing through HubSpot Academy and have a deep interest in how technology can transform the way people and businesses manage their financial lives. I am actively seeking a role in sales or customer success where I can combine my communication strengths with a product I genuinely believe in.</p>
+      </div>
+      <div>
+        <ul class="skills-list">
+          <li>Lead Qualification & Needs Assessment</li>
+          <li>Client Relationship Management</li>
+          <li>Virtual Demos (Zoom / Google Meet)</li>
+          <li>CRM & Record Keeping</li>
+          <li>Objection Handling</li>
+          <li>Inbound Marketing (HubSpot Certified)</li>
+          <li>Data Entry & Reporting</li>
+          <li>Team Coordination & Leadership</li>
+          <li>Microsoft Office Suite</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Experience</p>
+      <h2 class="section-title">Where I've Made<br/>an Impact</h2>
+    </div>
+    <div class="timeline reveal">
+
+      <div class="timeline-item">
+        <p class="timeline-date">Aug 2023 – Jul 2024</p>
+        <h3 class="timeline-role">NYSC Member — Patient Relations & Health Education</h3>
+        <p class="timeline-org">Nigerian Army & Future Centre Clinic, Abuja</p>
+        <ul class="timeline-bullets">
+          <li>Served as first point of contact for patients — conducting intake consultations, assessing needs, and guiding informed decisions on treatment and vaccination</li>
+          <li>Maintained detailed patient records and ensured consistent follow-up — closely mirroring CRM pipeline management in a sales environment</li>
+          <li>Built lasting rapport with patients across multiple visits, demonstrating persistence and relationship-building skills central to sales success</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">Oct 2021 – Jan 2022</p>
+        <h3 class="timeline-role">Student Intern — Health Education & Client Outreach</h3>
+        <p class="timeline-org">Ministry of Health, Ilorin</p>
+        <ul class="timeline-bullets">
+          <li>Educated and counselled clients on HIV prevention and care — adapting communication to each individual's readiness and level of understanding</li>
+          <li>Managed client follow-ups to re-engage those who had dropped off, demonstrating the persistent outreach mindset critical to sales roles</li>
+          <li>Collaborated with healthcare teams to improve client experience and streamline daily operations</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">2022 – Present</p>
+        <h3 class="timeline-role">Volunteer Team Lead</h3>
+        <p class="timeline-org">Feed the Vulnerable Families Nigeria</p>
+        <ul class="timeline-bullets">
+          <li>Led community outreach campaigns — identifying target audiences, engaging prospects, and driving participation toward programme goals</li>
+          <li>Coordinated and motivated a team of volunteers toward measurable fundraising and delivery targets</li>
+          <li>Developed goal-oriented habits and team leadership skills applicable to fast-paced, quota-driven environments</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certifications">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Certifications</p>
+      <h2 class="section-title">Credentials &amp; Learning</h2>
+    </div>
+    <div class="cert-grid reveal">
+      <div class="cert-card">
+        <div class="cert-icon">🏆</div>
+        <div class="cert-name">Content Marketing</div>
+        <div class="cert-issuer">HubSpot Academy — CRM & Inbound Marketing</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">📋</div>
+        <div class="cert-name">Project Management</div>
+        <div class="cert-issuer">Professional Certification</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">👥</div>
+        <div class="cert-name">Human Resource Management</div>
+        <div class="cert-issuer">Professional Certification</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🛡️</div>
+        <div class="cert-name">Health &amp; Safety</div>
+        <div class="cert-issuer">Professional Certification</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="reveal">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="cta-sub">Open to opportunities in inbound sales, customer success, and client engagement across Abuja and beyond.</p>
+    <div class="cta-buttons">
+      <a href="mailto:yusufzaynab92@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="tel:+2348037455568" class="btn btn-outline">Call Me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Zaynab Yusuf · Abuja, Nigeria · yusufzaynab92@gmail.com</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>
